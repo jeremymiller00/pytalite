@@ -21,6 +21,7 @@ import matplotlib as mpl
 #     style_path = 'stylelib/ggplot-transparent-old.mplstyle'
 # else:
 #     style_path = 'stylelib/ggplot-transparent.mplstyle'
+#     style_path = 'stylelib/ggplot.mplstyle'
 # del mpl
 
 # # Set path of the mpl style sheet
@@ -108,7 +109,7 @@ def decile_plot(df, y_column, model, model_input_col='features', columns_to_excl
 
     # Create decile plot
     with plt.style.context(style_path):
-        fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(12, 9))
+        fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(10,6))
         xticks = np.arange(0, 11) / 10
         xtick_labels = list(map(lambda x: "%d%%" % x, xticks * 100))
         xs = np.arange(num_deciles) / num_deciles
@@ -163,7 +164,7 @@ def _categorical_fc_plot(df, y_column, model, feature_column, assembler):
 
     # Plot
     with plt.style.context(style_path):
-        fig = plt.figure(figsize=(12, 9))
+        fig = plt.figure(figsize=(10,6))
         grid = GridSpec(3, 1, height_ratios=[5, 5, 0.5], hspace=0.1)
         ax1 = plt.subplot(grid[0])
         fig.add_subplot(ax1)
@@ -253,7 +254,7 @@ def _numerical_fc_plot(df, y_column, model, feature_column, assembler):
 
     # Plot
     with plt.style.context(style_path):
-        fig = plt.figure(figsize=(12, 9))
+        fig = plt.figure(figsize=(10,6))
         grid = GridSpec(3, 1, height_ratios=[5, 5, 0.5], hspace=0.1)
         ax1 = plt.subplot(grid[0])
         fig.add_subplot(ax1)
@@ -411,7 +412,7 @@ def density_plot(df, y_column, models, model_names=(), model_input_col="features
     ces = []
 
     with plt.style.context(style_path):
-        fig = plt.figure(figsize=(12, 9), facecolor=(1, 1, 1, 0))
+        fig = plt.figure(figsize=(10,6), facecolor=(1, 1, 1, 0))
         grid = GridSpec(2, 1, height_ratios=[3.5, 3.5], hspace=0)
         ax1 = fig.add_subplot(grid[0])
         ax2 = fig.add_subplot(grid[1])
@@ -578,7 +579,7 @@ def feature_importance_plot(df, y_column, model, model_input_col='features', col
     top_means = means[:n_top][::-1]
 
     with plt.style.context(style_path):
-        fig, ax = plt.subplots(figsize=(12, 9))
+        fig, ax = plt.subplots(figsize=(10,6))
         ticks = np.arange(len(top_ticks_labels))
         barh_plot(ax, ticks, top_means, bar_color=clr.main[0],
                   xlim=(0.0, 1.1), xlabel='Feature Importance (loss: cross-entropy)',
@@ -682,7 +683,7 @@ def feature_ale_plot(df, y_column, model, feature_column, model_type='classifica
     xs = (quantiles[1:] + quantiles[:-1]) / 2
 
     with plt.style.context(style_path):
-        fig = plt.figure(figsize=(12, 9), facecolor=(1, 1, 1, 0))
+        fig = plt.figure(figsize=(10,6), facecolor=(1, 1, 1, 0))
         grid = GridSpec(2, 1, height_ratios=[10, 1], hspace=0)
 
         ax1 = plt.subplot(grid[0])
@@ -783,7 +784,7 @@ def _partial_dependence_plot_cat(df, y_column, model, feature_column, assembler,
     indices = np.arange(len(vals))
 
     with plt.style.context(style_path):
-        fig = plt.figure(figsize=(12, 9))
+        fig = plt.figure(figsize=(10,6))
         grid = GridSpec(2, 1, height_ratios=[7, 0.5], hspace=0.1)
         ax1 = plt.subplot(grid[0])
         fig.add_subplot(ax1)
@@ -829,7 +830,7 @@ def _partial_dependence_plot_num(df, y_column, model, feature_column, assembler,
     means, cis = _partial_dependence_num(xs, df, model, feature_column, assembler, model_type, n_samples)
 
     with plt.style.context(style_path):
-        fig = plt.figure(figsize=(12, 9), facecolor=(1, 1, 1, 0))
+        fig = plt.figure(figsize=(10,6), facecolor=(1, 1, 1, 0))
         grid = GridSpec(2, 1, height_ratios=[10, 1], hspace=0)
 
         ax1 = plt.subplot(grid[0])
