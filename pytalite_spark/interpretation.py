@@ -17,19 +17,21 @@ from pytalite_spark.util.plots import *
 from pytalite_spark.plotwrapper import PlotWrapper
 
 import matplotlib as mpl
-if mpl.__version__ <= '1.4.3':
-    style_path = 'stylelib/ggplot-transparent-old.mplstyle'
-else:
-    style_path = 'stylelib/ggplot-transparent.mplstyle'
-del mpl
+# if mpl.__version__ <= '1.4.3':
+#     style_path = 'stylelib/ggplot-transparent-old.mplstyle'
+# else:
+#     style_path = 'stylelib/ggplot-transparent.mplstyle'
+# del mpl
 
-# Set path of the mpl style sheet
-try:
-    import pathlib
-    style_path = str(pathlib.Path(__file__).parent.resolve() / style_path)
-except ImportError:
-    from os import path
-    style_path = path.join(path.dirname(path.abspath(__file__)), style_path)
+# # Set path of the mpl style sheet
+# try:
+#     import pathlib
+#     style_path = str(pathlib.Path(__file__).parent.resolve() / style_path)
+# except ImportError:
+#     from os import path
+#     style_path = path.join(path.dirname(path.abspath(__file__)), style_path)
+
+style_path = 'ggplot'
 
 spark = SparkSession.builder.getOrCreate()
 sc = SparkContext.getOrCreate()
